@@ -34,6 +34,10 @@ export function* signIn({ payload }) {
   }
 }
 
+export function signOut() {
+  history.push('/');
+}
+
 export function* signUp({ payload }) {
   try {
     const { name, email, password } = payload;
@@ -64,4 +68,5 @@ export default all([
   takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
   takeLatest('@auth/SIGN_UP_REQUEST', signUp),
+  takeLatest('@auth/SIGN_OUT', signOut),
 ]);
